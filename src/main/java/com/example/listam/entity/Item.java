@@ -12,11 +12,11 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
     private String title;
     private String description;
 
     @ManyToOne
     private Category category;
+    private String imgName;
 
 }
