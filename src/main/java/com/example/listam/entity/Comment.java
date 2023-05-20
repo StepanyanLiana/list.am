@@ -16,5 +16,7 @@ public class Comment {
     private String commentText;
     @ManyToOne
     private Item item;
+    @ManyToOne
+    private User user;
     private Date commentDate;
 }
