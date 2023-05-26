@@ -5,6 +5,8 @@
     <title>Add Items</title>
 </head>
 <body>
+<div th th:include="fragment/header::headerFragment"></div>
+
 <a href="/items">back</a><br>
 <form action="/items/add" method="post" enctype="multipart/form-data">
   <input type="text" name="title"><br>
@@ -14,7 +16,12 @@
             th:text="${category.name}" th:value="${category.id}"></option>
   </select><br>
     <input type="file" name="image">
-  <input type="submit" value="create">
+    <div th:each="tag, status:${hashtags}">
+        <span th:text="${tag.name}"></span>
+        <input type="checkbox" th:name="hashtagList[__${status.index}__].id" th:value="${tag.id}">
+    </div>
+  <input type="submit" value="create"><br>
+    <div th th:include="fragment/header::footerFragment"></div>
 </form>
 </body>
 </html>

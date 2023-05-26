@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="headerFragment">
+<div th:if="${currentUser != null}">Welcome<b th:text="${currentUser.name}">
+  <h1><a HREF="/logout">logout</a></h1><br>
+</b>
+</div>
+</div>
+<div th:fragment="footerFragment">
+  <span>Copyright 2023, ITSpace</span>
+</div>
+</body>
+</html>

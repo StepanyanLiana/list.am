@@ -16,14 +16,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @Column(columnDefinition = "varchar(50)")
     private String name;
+    @Column(columnDefinition = "varchar(50)")
     private String surname;
+    @Column(columnDefinition = "varchar(50)")
     private String email;
+    @Column(columnDefinition = "varchar(50)")
     private String password;
-
     @Enumerated(value = EnumType.STRING)
     private UserType userType;
-    @DateTimeFormat(pattern = "yyyy-MM-hh")
-    private Date dOB;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dob;
 }

@@ -5,20 +5,24 @@
     <title>Single Items</title>
 </head>
 <body>
+<div th th:include="fragment/header::headerFragment"></div>
 <a href="/items">Back</a>
 <h2 th:text="${item.title}"></h2>
 <img th:if="${item.getImgName() != null}" th:src="@{/getImage(imageName=${item.getImgName()})}" width="400"/>
 <p th:text="${item.description}"></p>
-<span th:if="${item.category != null}" th:text="${item.category.name}"></span><br>
-<form action="/comment/add" method="post">
+category:<span th:if="${item.category != null}" th:text="${item.category.name}"></span><br><br>
+
+tags:<span th:each="tag:${item.hashtagList}" th:text="'#'+${tag.name}"></span>
+
+<form action="/items/comment/add" method="post">
     <input type="hidden" name="item.id" th:value="${item.id}">
   comment:<br> <textarea name="commentText"></textarea><br>
     <input type="submit" value="create">
 </form>
 <div th:each="comment : ${comments}">
-   Comment: <span th:text="${comment.getCommentText()}"></span><br>
+   Comment: <span th:text="${comment.commentText}"></span><br>
     Comment Author: <span th:text="${comment.user.name}"></span>
-    Date: <span th:text="${comment.getCommentDate()}"></span>
+    Date: <span th:text="${comment.commentDate}"></span>
 </div>
 </body>
 </html>
