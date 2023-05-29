@@ -35,6 +35,7 @@ public class ItemController {
     @GetMapping
     public String itemsPage(ModelMap modelMap, @AuthenticationPrincipal CurrentUser currentUser) {
         modelMap.addAttribute("items", itemService.findItemsByUser(currentUser.getUser()));
+        modelMap.addAttribute("categories", categoryService.findAll());
         return "items";
     }
 

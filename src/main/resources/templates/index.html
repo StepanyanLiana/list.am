@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <style>
+        .hrefs{
+            font-size: 20px;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
 <div th:include="fragment/header::headerFragment"></div>
@@ -12,4 +19,11 @@
 <a href="/categories"> Categories Page</a> <br>
 <a href="/items"> Items Page</a><br>
 </body>
+<script>
+    $(document).ready(function () {
+  let aTags = $("a");
+  aTags.addClass(("hrefs"));
+//  for (let aTag of aTags) {}
+    })
+</script>
 </html>

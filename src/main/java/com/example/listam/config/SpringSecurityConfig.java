@@ -1,6 +1,6 @@
 package com.example.listam.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,12 +13,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
+@RequiredArgsConstructor
 public class SpringSecurityConfig {
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -26,6 +24,10 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET,"/").permitAll()
                 .requestMatchers("/user/register").permitAll()
+                .requestMatchers("/vendor/**").permitAll()
+                .requestMatchers("/css/**").permitAll()
+                .requestMatchers("/js/**").permitAll()
+                .requestMatchers("/img/**").permitAll()
                 .requestMatchers("/categories/**").hasAnyAuthority("ADMIN", "USER")
                 .requestMatchers("/user/admin").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
