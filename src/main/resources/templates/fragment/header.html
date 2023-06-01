@@ -14,6 +14,12 @@
   <link href="/vendor/sidebar/demo.css" rel="stylesheet">
 </th:block>
 <div th:fragment="headerFragment">
+  <div>
+    <a href="?lang=hy">հայերեն</a>
+    <a href="?lang=ru">Русский</a>
+    <a href="?lang=en">English</a>
+  </div>
+
 <div th:if="${currentUser != null}">Welcome<b th:text="${currentUser.name}">
   <h1><a HREF="/logout">logout</a></h1><br>
 </b>

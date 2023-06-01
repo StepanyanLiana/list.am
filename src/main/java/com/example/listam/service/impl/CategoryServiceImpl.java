@@ -4,6 +4,7 @@ import com.example.listam.entity.Category;
 import com.example.listam.repository.CategoryRepository;
 import com.example.listam.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
 
+  //  @Override
+  //  public List<Category> findAll(Pageable pageable) {
+       // return (List<Category>) categoryRepository.findAll(pageable);}
 
     @Override
     public List<Category> findAll() {
