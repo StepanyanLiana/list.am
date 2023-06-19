@@ -2,6 +2,7 @@ package com.example.listam.controller;
 
 import com.example.listam.entity.User;
 import com.example.listam.entity.UserType;
+import com.example.listam.service.MailService;
 import com.example.listam.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,7 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final MailService mailService;
 
     @GetMapping("/register")
     public String registerPage() {
@@ -35,6 +37,8 @@ public class UserController {
             user.setPassword(encodedPassword);
             user.setUserType(UserType.USER);
             userService.save(user);
+            //send email
+            mailService.sendMail(user.getEmail(), "Welcome", "Hi" + user.getName() + "Welcome to our site!!!");
         }
         return "redirect:/";
     }

@@ -20,7 +20,7 @@ tags:<span th:each="tag:${item.hashtagList}" th:text="'#'+${tag.name}"></span>
     <input type="submit" value="create">
 </form>
 <div th:each="comment : ${comments}">
-   Comment: <span th:text="${comment.commentText}"></span><br>
+   Comment: <span th:text="${comment.commentDate}"></span><br>
     Comment Author: <span th:text="${comment.user.name}"></span>
     Date: <span th:text="${comment.commentDate}"></span>
 </div>
