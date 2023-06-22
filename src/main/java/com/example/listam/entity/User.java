@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 
 @Entity
@@ -28,4 +29,7 @@ public class User {
     private UserType userType;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+    private boolean enabled;
+    private String token;
 }
